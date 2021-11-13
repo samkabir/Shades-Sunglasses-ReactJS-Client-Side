@@ -43,8 +43,8 @@ function App() {
                     <Explore></Explore>
                   </Route>
                 </Switch>
-            <Footer></Footer>   
-        </Router>
+              <Footer></Footer>
+          </Router>
         </AuthProvider>
     </div>
   );

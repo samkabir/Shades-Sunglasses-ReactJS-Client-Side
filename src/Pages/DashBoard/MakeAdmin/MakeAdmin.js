@@ -1,5 +1,6 @@
 import { Button, TextField, Alert } from '@mui/material';
 import React, { useState } from 'react';
+import Box from '@mui/material/Box';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
@@ -28,7 +29,7 @@ const MakeAdmin = () => {
         e.preventDefault()
     }
     return (
-        <div>
+        <Box>
             <h2>Make an Admin</h2>
             <form onSubmit={handleAdminSubmit}>
                 <TextField
@@ -37,10 +38,10 @@ const MakeAdmin = () => {
                     type="email"
                     onBlur={handleOnBlur}
                     variant="standard" />
-                <Button type="submit" variant="contained">Make Admin</Button>
+                <Button sx={{ mx: 2 }} type="submit" variant="contained">Make Admin</Button>
             </form>
             {success && <Alert severity="success">Made Admin successfully!</Alert>}
-        </div>
+        </Box>
     );
 };
 

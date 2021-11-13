@@ -9,6 +9,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useForm } from "react-hook-form";
 import { Alert  } from '@mui/material';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 const Purchase = () => {
     const [product, setProduct] = useState({});
@@ -62,18 +64,18 @@ const Purchase = () => {
 
     return (
         <Container>
-            <Grid container spacing={2}>
-                <Grid item xs={12} md={6}>
+            <Grid container spacing={2} sx={{ my: 10 }}>
+                <Grid item xs={12} md={5}>
                     <Paper elevation={3} >
-                        <img src={product.img} width="100%" alt="" />
-                        <Typography variant="h6" gutterBottom component="div">
+                        <img src={product.img} width="100%" height="300px" alt="" />
+                        <Typography sx={{ max:'auto', textAlign:'center' }} variant="h6" gutterBottom component="div">
                             {product.name}
                         </Typography>
                         <Typography variant="h6" gutterBottom component="div">
-                            {product.price}
+                            <DescriptionIcon />{product.big_des}
                         </Typography>
                         <Typography variant="h6" gutterBottom component="div">
-                            {product.big_des}
+                            <AttachMoneyIcon />{product.price}
                         </Typography>
                     </Paper>
                 </Grid>

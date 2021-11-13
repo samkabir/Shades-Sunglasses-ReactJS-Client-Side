@@ -1,8 +1,10 @@
 import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 
 const MakeReview = () => {
-    const initialInfo = { name: '', comment: '', rating:'' };
+    const initialInfo = { name: '', comment: '' };
     const [review, setReview] = useState(initialInfo);
 
     const handleOnBlur = e => {
@@ -30,20 +32,40 @@ const MakeReview = () => {
     }
     return (
         <div>
+            <h3>Leave your Review!</h3>
             <form onSubmit={handleReviewSubmit}>
-                <TextField
-                    sx={{ width: '50%' }}
-                    label="Name"
-                    name="name"
-                    onBlur={handleOnBlur}
-                    variant="standard" />
-                <TextField
-                    sx={{ width: '50%' }}
-                    label="Comment"
-                    name="comment"
-                    onBlur={handleOnBlur}
-                    variant="standard" />
-                <Button type="submit" variant="contained">Submit</Button>
+                <Container>
+                    <Grid sx={{ my: 5}} xs={12} md={12}>
+                        <Grid >
+                            <TextField
+                                sx={{ width: '50%' }}
+                                label="Name"
+                                type="text"
+                                name="name"
+                                onBlur={handleOnBlur}
+                                variant="standard" />
+                        </Grid>
+                        <Grid >
+                        <TextField
+                            sx={{ width: '50%' }}
+                            label="Comment"
+                            type="text"
+                            name="comment"
+                            onBlur={handleOnBlur}
+                            variant="standard" />
+                        </Grid>
+                        <Grid>
+                        <TextField
+                            sx={{ width: '50%' }}
+                            type="number"
+                            label="Rating"
+                            name="rating"
+                            onBlur={handleOnBlur}
+                            variant="standard" />
+                        </Grid>
+                    </Grid>
+                    <Button type="submit" variant="contained">Submit</Button>
+                </Container>
             </form>
         </div>
     );

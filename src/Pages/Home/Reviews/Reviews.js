@@ -3,11 +3,15 @@ import useReviews from '../../../hooks/useReviews';
 import SingleReview from '../SingleReview/SingleReview';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
+import { Typography } from '@mui/material';
 
 const Reviews = () => {
     const reviews = useReviews();
     return (
         <Container>
+            <Typography sx={{ mt: 5, textAlign:'center' }} variant="h4">
+                Reviews
+            </Typography>
             <Grid container sx={{ my: 12 }} spacing={2}>
            {
                reviews.map(reviewsingle => <SingleReview

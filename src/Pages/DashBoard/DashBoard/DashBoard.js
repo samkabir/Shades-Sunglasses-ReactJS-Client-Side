@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
+
+import ListItem from '@mui/material/ListItem';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -21,7 +23,6 @@ import MakeReview from '../MakeReview/MakeReview';
 import Pay from '../Pay/Pay';
 import DashBoardHome from '../DashBoardHome/DashBoardHome';
 import useAuth from './../../../hooks/useAuth';
-import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
 import AddaProduct from '../AddaProduct/AddaProduct';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageProducts from '../ManageProducts/ManageProducts';
@@ -42,26 +43,24 @@ const DashBoard = (props) => {
     const drawer = (
         <div>
             <Toolbar />
-            <Divider />
+            
 
             {admin? 
-            <Box>
-                <Link to="/home"><Button color="inherit">Home</Button></Link>
-                <Link to={`${url}`}><Button color="inherit">Manage All Orders</Button></Link>
-                <Link to={`${url}/addaproduct`}><Button color="inherit">Add a Product</Button></Link> 
-                <Link to={`${url}/makeadmin`}><Button color="inherit">Make Admin</Button></Link> 
-                <Link to={`${url}/manageproducts`}><Button color="inherit">Manage Products</Button></Link> 
-            </Box>:
-            <Box>
-                <Link to="/home"><Button color="inherit">Home</Button></Link>
-                <Link to={`${url}`}><Button color="inherit">My Orders</Button></Link>
-                <Link to={`${url}/review`}><Button color="inherit">Review</Button></Link>
-                <Link to={`${url}/pay`}><Button color="inherit">Payment</Button></Link> 
-            </Box>
+            <List>
+                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to="/home"><Button color="inherit">Home</Button></Link></ListItem>
+                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}`}><Button color="inherit">Manage All Orders</Button></Link></ListItem>
+                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/addaproduct`}><Button color="inherit">Add a Product</Button></Link></ListItem>
+                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/makeadmin`}><Button color="inherit">Make Admin</Button></Link></ListItem>
+                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/manageproducts`}><Button color="inherit">Manage Products</Button></Link></ListItem>
+            </List>:
+            <List>
+                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to="/home"><Button color="inherit">Home</Button></Link></ListItem>
+                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}`}><Button color="inherit">My Orders</Button></Link></ListItem>
+                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/review`}><Button color="inherit">Review</Button></Link></ListItem>
+                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/pay`}><Button color="inherit">Payment</Button></Link></ListItem>
+            </List>
             }
-
-
-            <Button onClick={logout} color="inherit">Logout</Button>
+            <ListItem button><Button onClick={logout} color="inherit">Logout</Button></ListItem>
             <List>
                 
             </List>
@@ -80,7 +79,7 @@ const DashBoard = (props) => {
                 ml: { sm: `${drawerWidth}px` },
                 }}
             >
-                <Toolbar>
+                <Toolbar sx={{ backgroundColor:'black' }}>
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"

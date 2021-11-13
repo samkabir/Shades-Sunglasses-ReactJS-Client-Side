@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import useAuth from './../../../hooks/useAuth';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 const Navigation = () => {
@@ -23,13 +25,14 @@ const Navigation = () => {
                     {
                         user?.email ?
                         <Box>
+                            <Link style={{textDecoration:'none', color:'white'}} to="/explore"><Button color="inherit">Explore</Button></Link>
                             <Link style={{textDecoration:'none', color:'white'}} to="/dashboard"><Button color="inherit">DashBoard</Button></Link>
-                            <Button onClick={logout} color="inherit">Logout</Button>
+                            <Button onClick={logout} color="inherit">{user?.displayName} Logout<LogoutIcon /></Button>
                         </Box>
                         :
                         <Box>
                             <Link style={{textDecoration:'none', color:'white'}} to="/explore"><Button color="inherit">Explore</Button></Link>
-                            <Link style={{textDecoration:'none', color:'white'}} to="/login"><Button color="inherit">Login</Button></Link>
+                            <Link style={{textDecoration:'none', color:'white'}} to="/login"><Button color="inherit">Login<LoginIcon /></Button></Link>
                         </Box>
                     }
                     </Toolbar>

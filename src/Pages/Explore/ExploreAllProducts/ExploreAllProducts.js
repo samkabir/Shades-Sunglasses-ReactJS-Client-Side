@@ -6,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Link } from 'react-router-dom';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 const ExploreAllProducts = ({product}) => {
     const {_id, name, img, price, short_des} = product;
@@ -24,16 +26,16 @@ const ExploreAllProducts = ({product}) => {
                         {name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {short_des}
+                     <DescriptionIcon />{short_des}
                     </Typography>
                     <Typography variant="h5" color="text.secondary">
-                        {price}
+                        <AttachMoneyIcon />{price}
                     </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                <Link to={`/purchase/${_id}`}>
-                    <Button size="small" color="primary">
+                <Link style={{textDecoration:'none'}} to={`/purchase/${_id}`}>
+                    <Button variant="contained">
                     Buy Now
                     </Button>
                 </Link>  

@@ -3,12 +3,16 @@ import useProducts from '../../../hooks/useProducts';
 import Grid from '@mui/material/Grid';
 import Product from '../Product/Product';
 import Container from '@mui/material/Container';
+import { Typography } from '@mui/material';
 
 const Products = () => {
     const products = useProducts();
 
     return (
         <Container>
+            <Typography sx={{ mt: 5, textAlign:'center' }} variant="h4">
+                Featured Products
+            </Typography>
             <Grid container sx={{ my: 12 }} spacing={2}>
             {
                 products.slice(0, 6).map(product => <Product

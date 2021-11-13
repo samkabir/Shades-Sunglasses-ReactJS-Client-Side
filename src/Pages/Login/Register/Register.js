@@ -70,9 +70,7 @@ const Register = () => {
 
                             <Button type="submit" sx={{width: '75%', m:2 }} variant="contained"> Register </Button>
 
-                                <NavLink 
-                            style={{textDecoration:'none'}}
-                            to="/login">
+                            <NavLink style={{textDecoration:'none'}} to="/login">
                                 <Button variant="text">Already Registered?</Button>
                             </NavLink>
 
