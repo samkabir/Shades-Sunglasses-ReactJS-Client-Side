@@ -23,7 +23,7 @@ const Product = ({product}) => {
                     alt=""
                     />
                     <CardContent>
-                    <Typography gutterBottom variant="h4" component="div">
+                    <Typography gutterBottom variant="h5" component="div">
                         {name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -35,7 +35,7 @@ const Product = ({product}) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <NavLink style={{textDecoration:'none'}} to={`/purchase/${_id}`}>
+                    <NavLink style={{textDecoration:'none', width:'100%'}} to={`/purchase/${_id}`}>
                         <Button variant="contained">
                         Buy Now
                         </Button>

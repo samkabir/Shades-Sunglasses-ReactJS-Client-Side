@@ -2,10 +2,12 @@ import { Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import { useForm } from 'react-hook-form';
 
 const AddaProduct = () => {
     const initialInfo = { name: '', img: '', big_des: '', price: '', short_des: '' };
     const [singleproduct, setSingleProduct] = useState(initialInfo);
+    const { reset } = useForm();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -15,7 +17,6 @@ const AddaProduct = () => {
         setSingleProduct(newInfo);
     }
     const handleProductSubmit = e => {
-         
         fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
@@ -26,6 +27,7 @@ const AddaProduct = () => {
         .then(res => res.json())
         .then(res => {
             if(res.insertedId){
+                reset();
             }
         })
         e.preventDefault();

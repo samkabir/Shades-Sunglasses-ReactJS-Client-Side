@@ -4,10 +4,12 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import ExploreAllProducts from '../ExploreAllProducts/ExploreAllProducts';
 import Typography from '@mui/material/Typography';
+import Footer from '../../Shared/Footer/Footer';
 
 const Explore = () => {
     const products = useProducts();
     return (
+        <>
         <Container>
             <Typography sx={{ mt: 5, textAlign:'center' }} variant="h4">
                All Products
@@ -22,6 +24,8 @@ const Explore = () => {
             }
             </Grid>
         </Container>
+        <Footer></Footer>
+        </>
     );
 };
 

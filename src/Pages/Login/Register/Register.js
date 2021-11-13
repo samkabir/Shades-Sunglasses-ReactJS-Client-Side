@@ -5,6 +5,7 @@ import img from '../../../images/Login/login-img.jpg'
 import { Container, TextField, Typography, CircularProgress, Alert } from '@mui/material';
 import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import Footer from '../../Shared/Footer/Footer';
 
 
 const Register = () => {
@@ -28,6 +29,7 @@ const Register = () => {
         e.preventDefault();
     }
     return (
+        <>
         <Container>
                 <Grid container spacing={2}>
                     <Grid sx={{ my: 5}} item xs={12} md={6}>
@@ -84,7 +86,9 @@ const Register = () => {
                         <img style={{width: '100%'}} src={img} alt="" />
                     </Grid>
                 </Grid>
-            </Container>  
+            </Container> 
+            <Footer></Footer>
+        </>
     );
 };
 

@@ -12,7 +12,7 @@ const Reviews = () => {
             <Typography sx={{ mt: 5, textAlign:'center' }} variant="h4">
                 Reviews
             </Typography>
-            <Grid container sx={{ my: 12 }} spacing={2}>
+            <Grid container sx={{ mb: 12, mt: 4 }} spacing={2}>
            {
                reviews.map(reviewsingle => <SingleReview
                 key={reviewsingle._id}

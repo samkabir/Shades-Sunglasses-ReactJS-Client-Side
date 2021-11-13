@@ -22,7 +22,7 @@ const ExploreAllProducts = ({product}) => {
                     alt=""
                     />
                     <CardContent>
-                    <Typography gutterBottom variant="h4" component="div">
+                    <Typography gutterBottom variant="h5" component="div">
                         {name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">

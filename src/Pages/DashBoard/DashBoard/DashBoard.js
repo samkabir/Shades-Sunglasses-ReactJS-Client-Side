@@ -47,20 +47,20 @@ const DashBoard = (props) => {
 
             {admin? 
             <List>
-                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to="/home"><Button color="inherit">Home</Button></Link></ListItem>
-                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}`}><Button color="inherit">Manage All Orders</Button></Link></ListItem>
-                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/addaproduct`}><Button color="inherit">Add a Product</Button></Link></ListItem>
-                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/makeadmin`}><Button color="inherit">Make Admin</Button></Link></ListItem>
-                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/manageproducts`}><Button color="inherit">Manage Products</Button></Link></ListItem>
+                <Link style={{textDecoration:'none', color:'black'}} to="/home"><ListItem button><Button color="inherit">Home</Button></ListItem></Link>
+                <Link style={{textDecoration:'none', color:'black'}} to={`${url}`}><ListItem button><Button color="inherit">Manage All Orders</Button></ListItem></Link>
+                <Link style={{textDecoration:'none', color:'black'}} to={`${url}/addaproduct`}><ListItem button><Button color="inherit">Add a Product</Button></ListItem></Link>
+                <Link style={{textDecoration:'none', color:'black'}} to={`${url}/makeadmin`}><ListItem button><Button color="inherit">Make Admin</Button></ListItem></Link>
+                <Link style={{textDecoration:'none', color:'black'}} to={`${url}/manageproducts`}><ListItem button><Button color="inherit">Manage Products</Button></ListItem></Link>
             </List>:
             <List>
-                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to="/home"><Button color="inherit">Home</Button></Link></ListItem>
-                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}`}><Button color="inherit">My Orders</Button></Link></ListItem>
-                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/review`}><Button color="inherit">Review</Button></Link></ListItem>
-                <ListItem button><Link style={{textDecoration:'none', color:'black'}} to={`${url}/pay`}><Button color="inherit">Payment</Button></Link></ListItem>
+                <Link style={{textDecoration:'none', color:'black'}} to="/home"><ListItem button><Button color="inherit">Home</Button></ListItem></Link>
+                <Link style={{textDecoration:'none', color:'black'}} to={`${url}`}><ListItem button><Button color="inherit">My Orders</Button></ListItem></Link>
+                <Link style={{textDecoration:'none', color:'black'}} to={`${url}/review`}><ListItem button><Button color="inherit">Review</Button></ListItem></Link>
+                <Link style={{textDecoration:'none', color:'black'}} to={`${url}/pay`}><ListItem button><Button color="inherit">Payment</Button></ListItem></Link>
             </List>
             }
-            <ListItem button><Button onClick={logout} color="inherit">Logout</Button></ListItem>
+            <Button onClick={logout} color="inherit"><ListItem button>Logout</ListItem></Button>
             <List>
                 
             </List>

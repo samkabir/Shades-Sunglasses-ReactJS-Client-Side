@@ -5,6 +5,7 @@ import img from '../../../images/Login/login-img.jpg'
 import { Container, TextField, Typography, CircularProgress, Alert  } from '@mui/material';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import Footer from '../../Shared/Footer/Footer';
 
 
 const Login = () => {
@@ -62,7 +63,8 @@ const Login = () => {
                         <img style={{width: '100%'}} src={img} alt="" />
                     </Grid>
                 </Grid>
-            </Container>  
+            </Container>
+            <Footer></Footer> 
         </>
     );
 };

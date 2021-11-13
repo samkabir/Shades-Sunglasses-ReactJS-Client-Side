@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { Alert  } from '@mui/material';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import DescriptionIcon from '@mui/icons-material/Description';
+import { useHistory, useLocation } from 'react-router';
 
 const Purchase = () => {
     const [product, setProduct] = useState({});
@@ -20,6 +21,10 @@ const Purchase = () => {
     const initialInfo = { name: user.displayName, email: user.email, phone: '' };
     const [orderInfo, setOrderInfo] = useState(initialInfo);
     const { reset } = useForm();
+
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_url = location.state?.from || '/home';
 
 
     useEffect( () =>{
@@ -56,6 +61,7 @@ const Purchase = () => {
             if(res.insertedId){
                 setorderPlaced(true);
                 reset();
+                history.push(redirect_url);
             }
         })
         e.preventDefault();
