@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 const SingleReview = ({ reviewsingle }) => {
-    const {name, review} = reviewsingle;
+    const {name, comment} = reviewsingle;
     // const [value, setValue] = useState(4);
     // setValue(rating);
     return (
@@ -15,7 +15,7 @@ const SingleReview = ({ reviewsingle }) => {
                     {name}
                 </Typography>
                 <Typography variant="h5" gutterBottom component="div">
-                    {review}
+                    {comment}
                 </Typography>
                 {/* <Rating name="read-only" value={value} readOnly /> */}
             </Paper>   

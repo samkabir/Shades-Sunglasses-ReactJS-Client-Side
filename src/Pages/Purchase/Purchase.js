@@ -1,25 +1,125 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import useAuth from '../../hooks/useAuth'; 
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { useForm } from "react-hook-form";
+import { Alert  } from '@mui/material';
 
 const Purchase = () => {
     const [product, setProduct] = useState({});
-        const {productId} = useParams();
-        useEffect( () =>{
-            fetch(`http://localhost:5000/products/${productId}`)
-            .then(res => res.json())
-            .then(data => setProduct(data))
-        }, [])
-        console.log(product);
+    const [orderPlaced, setorderPlaced] = useState(false);
+    const {user} = useAuth();
+    const {productId} = useParams();
+    const initialInfo = { name: user.displayName, email: user.email, phone: '' };
+    const [orderInfo, setOrderInfo] = useState(initialInfo);
+    const { reset } = useForm();
+
+
+    useEffect( () =>{
+        fetch(`http://localhost:5000/products/${productId}`)
+        .then(res => res.json())
+        .then(data => setProduct(data))
+    }, []);
+    
+    const handleOnBlur = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newInfo = {...orderInfo};
+        newInfo[field] = value;
+        setOrderInfo(newInfo);
+    };
+    const handleBookingSubmit = e => {
+        //Collect Data
+        const order = {
+            ...orderInfo,
+            price: product.price,
+            productName: product.name,
+            status: 'Pending'
+        }
+        //Send Data to server
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+        .then(res => res.json())
+        .then(res => {
+            if(res.insertedId){
+                setorderPlaced(true);
+                reset();
+            }
+        })
+        e.preventDefault();
+    };
+
+
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-            
+        <Container>
+            <Grid container spacing={2}>
+                <Grid item xs={12} md={6}>
+                    <Paper elevation={3} >
+                        <img src={product.img} width="100%" alt="" />
+                        <Typography variant="h6" gutterBottom component="div">
+                            {product.name}
+                        </Typography>
+                        <Typography variant="h6" gutterBottom component="div">
+                            {product.price}
+                        </Typography>
+                        <Typography variant="h6" gutterBottom component="div">
+                            {product.big_des}
+                        </Typography>
+                    </Paper>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                <Typography variant="h4" gutterBottom component="div">
+                    Order Information
+                </Typography>
+                    <form onSubmit={handleBookingSubmit}>
+                        <TextField 
+                        sx={{width: '75%', m:2 }}
+                        label="Name" 
+                        name="name"
+                        onBlur={handleOnBlur}
+                        id="outlined-size-normal" 
+                        defaultValue={user?.displayName} 
+                        />
+                        <TextField
+                        sx={{width: '75%', m:2 }} 
+                        label="Email" 
+                        name="email"
+                        onBlur={handleOnBlur}
+                        id="outlined-size-normal" 
+                        defaultValue={user?.email}
+                        />
+                        <TextField 
+                        sx={{width: '75%', m:2 }}
+                        label="Address" 
+                        name="address"
+                        onBlur={handleOnBlur}
+                        id="outlined-size-normal" 
+                        defaultValue="" 
+                        />
+                        <TextField 
+                        sx={{width: '75%', m:2 }}
+                        label="Phone Number" 
+                        name="phone"
+                        onBlur={handleOnBlur}
+                        id="outlined-size-normal" 
+                        defaultValue="" 
+                        />
+                        <Button type="submit" sx={{width: '75%', m:2 }} variant="contained"> Order Now </Button>
+                    </form>
+                    {!orderPlaced ? '' : <Alert severity="success">Order Placed!</Alert>}
+                </Grid>
             </Grid>
-            <Grid item xs={12} md={6}>
-            
-            </Grid>
-        </Grid>
+        </Container>
     );
 };
 

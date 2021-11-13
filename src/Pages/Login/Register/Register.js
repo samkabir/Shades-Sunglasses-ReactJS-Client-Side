@@ -3,13 +3,13 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import img from '../../../images/Login/login-img.jpg'
 import { Container, TextField, Typography, CircularProgress, Alert } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
-
+    const history = useHistory();
     const { user, registerUser, isLoading, authError } = useAuth();
 
     const handleOnBlur = e =>{
@@ -24,7 +24,7 @@ const Register = () => {
             alert('Your Password Did not match');
             return;
         };
-        registerUser(loginData.email, loginData.password);
+        registerUser(loginData.email, loginData.password, loginData.name, history);
         e.preventDefault();
     }
     return (

@@ -15,12 +15,17 @@ const Navigation = () => {
             <Box sx={{ flexGrow: 1, pb: 2  }}>
                 <AppBar style={{ background: '#000000' }} position="static">
                     <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        News
-                    </Typography>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            <Link style={{textDecoration:'none', color:'white'}} to="/home">
+                            Shades
+                            </Link>
+                        </Typography>
                     {
                         user?.email ?
-                        <Button onClick={logout} color="inherit">Logout</Button>
+                        <Box>
+                            <Link style={{textDecoration:'none', color:'white'}} to="/dashboard"><Button color="inherit">DashBoard</Button></Link>
+                            <Button onClick={logout} color="inherit">Logout</Button>
+                        </Box>
                         :
                         <Box>
                             <Link style={{textDecoration:'none', color:'white'}} to="/explore"><Button color="inherit">Explore</Button></Link>

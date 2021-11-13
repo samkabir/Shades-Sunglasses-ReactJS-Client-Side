@@ -12,15 +12,19 @@ import Purchase from "./Pages/Purchase/Purchase";
 import Register from "./Pages/Login/Register/Register";
 import AuthProvider from "./contexts/AuthProvider";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
+import DashBoard from "./Pages/DashBoard/DashBoard/DashBoard";
 
 function App() {
   return (
-    <div>
+    <div className="App">
         <AuthProvider>
           <Router>
             <Navigation></Navigation>
                 <Switch>
                   <Route exact path="/">
+                    <Home></Home>
+                  </Route>
+                  <Route exact path="/home">
                     <Home></Home>
                   </Route>
                   <Route path="/login">
@@ -31,6 +35,9 @@ function App() {
                   </Route>
                   <PrivateRoute path="/purchase/:productId">
                     <Purchase></Purchase>
+                  </PrivateRoute>
+                  <PrivateRoute path="/dashboard">
+                    <DashBoard></DashBoard>
                   </PrivateRoute>
                   <Route path="/explore">
                     <Explore></Explore>
