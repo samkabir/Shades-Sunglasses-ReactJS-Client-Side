@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 const AllOrders = () => {
     const [orders, setOrders] = useState([]);
     const [approved, setApproved] = useState(false);
+
     useEffect(() => {
         fetch('https://peaceful-depths-32449.herokuapp.com/ordersall')
             .then(res => res.json())
@@ -25,6 +26,7 @@ const AllOrders = () => {
             })
             .then(res=>res.json())
             .then(data=>{
+                setApproved(false);
                 console.log(data);
                 if(data.deletedCount){
                     alert('Order Deleted!')
@@ -43,7 +45,7 @@ const AllOrders = () => {
         .then(data => {
             console.log(data);
             if(data.acknowledged){
-                alert('Order Approved!');
+                alert('Order Shipped!');
                 setApproved(true);
             }
         })

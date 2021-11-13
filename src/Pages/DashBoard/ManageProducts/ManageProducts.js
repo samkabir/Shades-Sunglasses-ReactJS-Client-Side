@@ -11,13 +11,13 @@ import Button from '@mui/material/Button';
 const ManageProducts = () => {
     
     const [allproducts, setAllProducts] = useState([]);
-
+    const [approved, setApproved] = useState(false);
     const [products, setProducts] = useState([]);
     useEffect(() => {
         fetch('https://peaceful-depths-32449.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [allproducts]);
+    }, [approved]);
 
     const handleDelete = id => {
         if(window.confirm('Are you sure?')){
