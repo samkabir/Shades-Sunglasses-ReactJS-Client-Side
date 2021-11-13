@@ -16,7 +16,7 @@ const MakeReview = () => {
     }
     const handleReviewSubmit = e => {
         
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://peaceful-depths-32449.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

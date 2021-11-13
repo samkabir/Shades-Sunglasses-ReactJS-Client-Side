@@ -12,14 +12,14 @@ const AllOrders = () => {
     const [orders, setOrders] = useState([]);
     const [approved, setApproved] = useState(false);
     useEffect(() => {
-        fetch('http://localhost:5000/ordersall')
+        fetch('https://peaceful-depths-32449.herokuapp.com/ordersall')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [approved]);
 
     const handleDelete = id => {
         if(window.confirm('Are you sure?')){
-            const url = `http://localhost:5000/ordersall/${id}`;
+            const url = `https://peaceful-depths-32449.herokuapp.com/ordersall/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -35,7 +35,7 @@ const AllOrders = () => {
         }
     }
     const handleStatus = id => {
-        const url = `http://localhost:5000/ordersall/${id}`;
+        const url = `https://peaceful-depths-32449.herokuapp.com/ordersall/${id}`;
         fetch(url, {
             method:'PUT'
         })

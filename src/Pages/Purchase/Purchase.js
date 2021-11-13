@@ -28,7 +28,7 @@ const Purchase = () => {
 
 
     useEffect( () =>{
-        fetch(`http://localhost:5000/products/${productId}`)
+        fetch(`https://peaceful-depths-32449.herokuapp.com/products/${productId}`)
         .then(res => res.json())
         .then(data => setProduct(data))
     }, []);
@@ -49,7 +49,7 @@ const Purchase = () => {
             status: 'Pending'
         }
         //Send Data to server
-        fetch('http://localhost:5000/orders', {
+        fetch('https://peaceful-depths-32449.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

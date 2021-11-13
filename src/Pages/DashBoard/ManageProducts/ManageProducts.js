@@ -14,14 +14,14 @@ const ManageProducts = () => {
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://peaceful-depths-32449.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [allproducts]);
 
     const handleDelete = id => {
         if(window.confirm('Are you sure?')){
-            const url = `http://localhost:5000/products/${id}`;
+            const url = `https://peaceful-depths-32449.herokuapp.com/products/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

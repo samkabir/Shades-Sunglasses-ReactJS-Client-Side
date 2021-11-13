@@ -17,7 +17,7 @@ const AddaProduct = () => {
         setSingleProduct(newInfo);
     }
     const handleProductSubmit = e => {
-        fetch('http://localhost:5000/products', {
+        fetch('https://peaceful-depths-32449.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
