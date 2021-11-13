@@ -1,93 +1,64 @@
-import { Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import { useForm } from 'react-hook-form';
+import './AddaProduct.css'
 
 const AddaProduct = () => {
-    const initialInfo = { name: '', img: '', big_des: '', price: '', short_des: '' };
-    const [singleproduct, setSingleProduct] = useState(initialInfo);
-    const { reset } = useForm();
 
-    const handleOnBlur = e => {
-        const field = e.target.name;
-        const value = e.target.value;
-        const newInfo = {...singleproduct};
-        newInfo[field] = value;
-        setSingleProduct(newInfo);
-    }
-    const handleProductSubmit = e => {
+    const {  register, handleSubmit, reset, formState: { errors } } = useForm();
+
+    const handleProductSubmit = data => {
+        console.log(data);
         fetch('https://peaceful-depths-32449.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(singleproduct)
+            body: JSON.stringify(data)
         })
         .then(res => res.json())
         .then(res => {
             if(res.insertedId){
+                alert('added successfully');
                 reset();
             }
         })
-        e.preventDefault();
+        
     }
 
     return (
         <div>
             <Container>
                 <h3>Add A Product</h3>
-                <Grid>
-                    <form onSubmit={handleProductSubmit}>
-                        <Grid>
-                            <TextField
-                                sx={{ width: '50%' }}
-                                label="Name"
-                                name="name"
-                                onBlur={handleOnBlur}
-                                variant="standard" 
-                                />
-                        </Grid>
-                        <Grid>
-                        <TextField
-                            sx={{ width: '50%' }}
-                            label="Image"
-                            name="img"
-                            onBlur={handleOnBlur}
-                            variant="standard" 
-                            />
-                        </Grid>
-                        <Grid>
-                        <TextField
-                            sx={{ width: '50%' }}
-                            label="Detailed Description"
-                            name="big_des"
-                            onBlur={handleOnBlur}
-                            variant="standard" 
-                            />
-                        </Grid>
-                        <Grid>
-                        <TextField
-                            sx={{ width: '50%' }}
-                            label="Short Description"
-                            name="short_des"
-                            onBlur={handleOnBlur}
-                            variant="standard" 
-                            />
-                        </Grid>
-                        <Grid>
-                        <TextField
-                            sx={{ width: '50%' }}
-                            label="Price"
-                            name="price"
-                            type='number'
-                            onBlur={handleOnBlur}
-                            variant="standard" 
-                            />
-                        </Grid>
-                        <Button sx={{ my: 2 }}type="submit" variant="contained">Submit</Button>
+                
+                    <form onSubmit={handleSubmit(handleProductSubmit)}>
+                        
+                        <div className="form">
+                        <input placeholder="Name"  {...register("name")} />
+                        {errors.name && <span className="error">This field is required</span>}
+                        </div>
+                        <div className="form">
+                        <input placeholder="Image URL"  {...register("img")} />
+                        {errors.img && <span className="error">This field is required</span>}
+                        </div>
+
+                        <div className="form">
+                        <input placeholder="Big Description" {...register("big_des")} />
+                        {errors.big_des && <span className="error">This field is required</span>}
+                        </div>
+
+                        <div className="form">
+                        <input placeholder="Short Description"  {...register("short_des")} />
+                        {errors.short_des && <span className="error">This field is required</span>}
+                        </div>
+                        <div className="form">
+                        <input placeholder="Price"  {...register("price")} />
+                        {errors.price && <span className="error">This field is required</span>}
+                        </div>
+                        <div className="form">
+                        <input id="btn" type="submit" />
+                        </div>
                     </form>
-                </Grid>
             </Container>
         </div>
     );

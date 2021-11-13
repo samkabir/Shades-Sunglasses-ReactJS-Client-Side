@@ -1,0 +1,12 @@
+.form input {
+    width: 50%;
+    margin: 10px;
+    height: 40px;
+    border-radius: 3px;
+}
+
+#btn{
+    color: white;
+    background-color:black;
+    font-size: 20px;
+}

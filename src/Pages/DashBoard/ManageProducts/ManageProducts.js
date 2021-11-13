@@ -32,6 +32,7 @@ const ManageProducts = () => {
                     alert('Product Deleted!')
                     const remaining = allproducts.filter(product => product._id !== id);
                     setAllProducts(remaining);
+                    setApproved(true);
                 }
             })
         }

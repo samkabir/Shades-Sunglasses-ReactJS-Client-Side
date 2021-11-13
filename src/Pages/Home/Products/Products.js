@@ -35,6 +35,6 @@ export default Products;
 // https://i.ibb.co/zPycX4v/5.jpg
 // https://i.ibb.co/ZWjthC4/6.jpg
 // https://i.ibb.co/jhfyGqG/7.jpg
-// https://i.ibb.co/bKrs9Wm/19.jpg
-// https://i.ibb.co/6FMpbGw/20.jpg
+// 
+// 
 
